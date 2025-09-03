@@ -1,5 +1,5 @@
 import React from 'react'
-import resumeUpload from './client-side/resumeUpload'
+
 
 function page() {
   return (
