@@ -1,36 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+PDF.js (often imported as pdfjs-dist) is an open-source JavaScript library used to parse PDF files and extract their contents, including text. It was created by Mozilla and is widely used for rendering PDFs in web browsers and accessing their structural data.
 
-First, run the development server:
+What is an ArrayBuffer?
+It's a low-level, binary data buffer representing raw bytes of a file in memory. Unlike reading files as text or data URLs, this raw format contains all the binary content exactly as it exists in the PDF file.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Read the uploaded PDF as an ArrayBuffer because it preserves the file’s exact binary structure, which is required for correct PDF decoding and text extraction by pdfjs-dist.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+FileReader reads file contents asynchronously is to prevent blocking the browser’s main thread, which keeps the user interface responsive.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+When we upload and read a file (like a PDF), it can be large and take some time to load. If the file was read synchronously (blocking), the entire webpage would freeze until all bytes are read, leading to a poor user experience — no clicks, no animations, no input processing.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Instead, FileReader reads the file in the background without freezing the UI and triggers events (like onload) when the file reading finishes. This asynchronous behavior allows users to continue interacting with the page smoothly during the file read operation.
