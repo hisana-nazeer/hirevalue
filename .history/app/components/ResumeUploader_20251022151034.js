@@ -1,6 +1,6 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-
+import { useState } from 'react';
+import * as pdfjsLib from "pdfjs-dist"
   
 const ResumeUploader=(props)=>{
 
@@ -23,7 +23,7 @@ const ResumeUploader=(props)=>{
     
     },[resume]);
 
-    console.log("file received in ResumeUploader:");
+    console.log("file received in ResumeUploader:", resume.name);
     const mergeTextContent = (textContent) =>{
         return textContent.items.map((item)=> item.str+(item.hasEOL?"\n":"")).join("")
     }
@@ -32,20 +32,18 @@ const ResumeUploader=(props)=>{
        //Import it dynamically inside your file reading function to reduce initial bundle size.
       try{  
         const pdfjs = await import("pdfjs-dist")
-        pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+        pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
         //Use FileReader to read the uploaded PDF file as an ArrayBuffer.
 
         const reader= new FileReader();
         reader.onload= async (event)=>{
             const arrayBuffer= event.target?.result;
-             console.log("ArrayBuffer loaded, byte length:", arrayBuffer?.byteLength);
             if (arrayBuffer && arrayBuffer instanceof ArrayBuffer){
                 // Wrap the raw binary data in a Uint8Array for pdfjs to process
-                const loadingTask = pdfjs.getDocument(new Uint8Array(arrayBuffer))
+                const loadingTask = pdfjs.getDocument(new Uint8Array(ArrayBuffer))
                 const pdfDoc = await loadingTask.promise;
                 
-                console.log("PDF document loaded, number of pages:", pdfDoc.numPages);
                 //initialize empty string to hold extracted text
                 let fullText=" " 
                 //loop through each page in resume doc
@@ -59,7 +57,6 @@ const ResumeUploader=(props)=>{
 
                 }
                 setExtractedText(fullText)
-                console.log("Extracted text:", fullText);
                 setError(null);
             }
             else{
@@ -68,7 +65,7 @@ const ResumeUploader=(props)=>{
         }
         reader.readAsArrayBuffer(resumeFile);
     } catch (err){
-        setError("Error processing PDF file: "+ err.message+"please try again.");
+        setError("Error processing PDF file: "+ err.message+);
 
 
     }
@@ -81,7 +78,6 @@ const ResumeUploader=(props)=>{
 
     
     )
-}
 }
 export default ResumeUploader;
 
@@ -98,3 +94,4 @@ Write a readResume function
 Use PDF.js’s getDocument() and getPage() methods to extract text (start with the first page only).
 
 Store or log the extracted text for now. */
+/** */

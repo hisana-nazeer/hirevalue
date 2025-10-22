@@ -23,7 +23,7 @@ const ResumeUploader=(props)=>{
     
     },[resume]);
 
-    console.log("file received in ResumeUploader:");
+    console.log("file received in ResumeUploader:", resume.name);
     const mergeTextContent = (textContent) =>{
         return textContent.items.map((item)=> item.str+(item.hasEOL?"\n":"")).join("")
     }
@@ -42,7 +42,7 @@ const ResumeUploader=(props)=>{
              console.log("ArrayBuffer loaded, byte length:", arrayBuffer?.byteLength);
             if (arrayBuffer && arrayBuffer instanceof ArrayBuffer){
                 // Wrap the raw binary data in a Uint8Array for pdfjs to process
-                const loadingTask = pdfjs.getDocument(new Uint8Array(arrayBuffer))
+                const loadingTask = pdfjs.getDocument(new Uint8Array(ArrayBuffer))
                 const pdfDoc = await loadingTask.promise;
                 
                 console.log("PDF document loaded, number of pages:", pdfDoc.numPages);
@@ -59,7 +59,7 @@ const ResumeUploader=(props)=>{
 
                 }
                 setExtractedText(fullText)
-                console.log("Extracted text:", fullText);
+                console
                 setError(null);
             }
             else{
