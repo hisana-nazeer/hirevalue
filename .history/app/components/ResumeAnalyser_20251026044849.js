@@ -1,0 +1,5 @@
+const ResumeAnalyser=()=>{
+    <div>
+        
+    </div>
+}
