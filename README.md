@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+1. ResumeUploader
+Purpose: Extract text from a PDF resume on the client side.
+Checklist:
 
-## Getting Started
+ Use pdfjs-dist.
 
-First, run the development server:
+ Dynamically import worker.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+ Read file as ArrayBuffer.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ Extract text from all pages.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+ Pass text to parent component.
+  2.Resume Analyzer App 
+Purpose: The main “flow controller” of the app.
+Checklist:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+ Display ResumeUploader first.
 
-## Learn More
+ Store extracted text (resumeText) in state.
 
-To learn more about Next.js, take a look at the following resources:
+ Automatically trigger an AI call when text is available.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+ Use useCompletion (from ai/react) with endpoint /api/resume.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+ Show loader until completion is done.
 
-## Deploy on Vercel
+ Display results with ResumeWorth once AI response arrives.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+You already have most of this working based on your ResumeAnalyzerApp!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3: API — /api/resume route
+Purpose: The bridge between your frontend and Mistral AI.
+This is your next step.
+
+Create a new file at:
+app/api/resume/route.js
+
+Its job:
+
+Receive POST request from frontend (the resume text).
+
+Send this text prompt to Mistral API for evaluation.
+
+Get back the AI-generated “worth” response.
+
+Return that simulated or computed analysis.
+
+PDF.js (often imported as pdfjs-dist) is an open-source JavaScript library used to parse PDF files and extract their contents, including text. It was created by Mozilla and is widely used for rendering PDFs in web browsers and accessing their structural data.
+
+What is an ArrayBuffer?
+It's a low-level, binary data buffer representing raw bytes of a file in memory. Unlike reading files as text or data URLs, this raw format contains all the binary content exactly as it exists in the PDF file.
+
+Read the uploaded PDF as an ArrayBuffer because it preserves the file’s exact binary structure, which is required for correct PDF decoding and text extraction by pdfjs-dist.
+
+
+FileReader reads file contents asynchronously is to prevent blocking the browser’s main thread, which keeps the user interface responsive.
+
+When we upload and read a file (like a PDF), it can be large and take some time to load. If the file was read synchronously (blocking), the entire webpage would freeze until all bytes are read, leading to a poor user experience — no clicks, no animations, no input processing.
+
+Instead, FileReader reads the file in the background without freezing the UI and triggers events (like onload) when the file reading finishes. This asynchronous behavior allows users to continue interacting with the page smoothly during the file read operation.
+
+Resume analyser.js
+await complete("RESUME: ...");
+means “send this text to my backend AI route (/api/resume) and wait for the AI’s response.”
+
+The hook automatically manages:
+
+isLoading — true while waiting for the AI’s reply,
+
+completion — the text returned by the AI,
+
+error — any error message that might occur.
+
+So, this line in your code:
+
+await complete(`RESUME: ${resumeText}\n\n-------\n\n`);
+is the trigger for your resume to be analyzed by the AI model running at your /api/resume endpoint.
+
+You could think of complete as a “send this to the AI and get back a result” button built into your code.
+
+
