@@ -59,3 +59,24 @@ FileReader reads file contents asynchronously is to prevent blocking the browser
 When we upload and read a file (like a PDF), it can be large and take some time to load. If the file was read synchronously (blocking), the entire webpage would freeze until all bytes are read, leading to a poor user experience — no clicks, no animations, no input processing.
 
 Instead, FileReader reads the file in the background without freezing the UI and triggers events (like onload) when the file reading finishes. This asynchronous behavior allows users to continue interacting with the page smoothly during the file read operation.
+
+Resume analyser.js
+await complete("RESUME: ...");
+means “send this text to my backend AI route (/api/resume) and wait for the AI’s response.”
+
+The hook automatically manages:
+
+isLoading — true while waiting for the AI’s reply,
+
+completion — the text returned by the AI,
+
+error — any error message that might occur.
+
+So, this line in your code:
+
+await complete(`RESUME: ${resumeText}\n\n-------\n\n`);
+is the trigger for your resume to be analyzed by the AI model running at your /api/resume endpoint.
+
+You could think of complete as a “send this to the AI and get back a result” button built into your code.
+
+
