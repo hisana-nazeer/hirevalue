@@ -1,5 +1,5 @@
 const ResumeAnalyser=()=>{
-    return()
+    return
     <div>
 
     </div>
