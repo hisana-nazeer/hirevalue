@@ -6,9 +6,8 @@ export async function POST(req){
 
     const { prompt } = await req.json();
 
-    const response = await openai.chat.completions.create({
-        model: 'gpt-4o',
-        stream: true,
+    const response = await ({
+        model: 'mistral-large-latest',
         messages:[
             {
                 role:'user',
@@ -51,8 +50,7 @@ OUTPUT FORMAT:
         ]
     })
 
-    //convert to stream for live response
-    const stream = OpenAIStream (response);
+    const stream =MistralStream (response);
     return new StreamingTextResponse(stream);
 
 }

@@ -51,7 +51,7 @@ OUTPUT FORMAT:
         ]
     })
 
-    //convert to stream for live response
+    //con
     const stream = OpenAIStream (response);
     return new StreamingTextResponse(stream);
 

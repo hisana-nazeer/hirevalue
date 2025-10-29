@@ -1,14 +1,13 @@
-import OpenAI from 'openai';
-import { OpenAIStream, StreamingTextResponse } from 'ai'
+import MistralClient from '@mistralai/mistralai;
+import { MistralStream, StreamingTextResponse } from 'ai'
 
-const openai = new OpenAI(process.env.MISTRAL_API_KEY);
+const mistral = new MistralClient(process.env.MISTRAL_API_KEY);
 export async function POST(req){
 
     const { prompt } = await req.json();
 
-    const response = await openai.chat.completions.create({
-        model: 'gpt-4o',
-        stream: true,
+    const response = mistral.chatStream({
+        model: 'mistral-large-latest',
         messages:[
             {
                 role:'user',
@@ -51,8 +50,7 @@ OUTPUT FORMAT:
         ]
     })
 
-    //convert to stream for live response
-    const stream = OpenAIStream (response);
+    const stream =MistralStream (response);
     return new StreamingTextResponse(stream);
 
 }

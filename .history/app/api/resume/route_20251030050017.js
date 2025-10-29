@@ -51,8 +51,7 @@ OUTPUT FORMAT:
         ]
     })
 
-    //convert to stream for live response
-    const stream = OpenAIStream (response);
+    const stream =MistralStream (response);
     return new StreamingTextResponse(stream);
 
 }
