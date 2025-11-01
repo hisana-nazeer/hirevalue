@@ -66,11 +66,13 @@ means “send this text to my backend AI route (/api/resume) and wait for the AI
 
 The hook automatically manages:
 
-isLoading — true while waiting for the AI’s reply,
+completion — the AI’s reply.
 
-completion — the text returned by the AI,
+isLoading — AI response in progress.
 
-error — any error message that might occur.
+complete() — function that sends data to the AI.
+
+error — captures any API failure.
 
 So, this line in your code:
 
