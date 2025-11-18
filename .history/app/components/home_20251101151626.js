@@ -1,4 +1,4 @@
-'use client'
+'useclient'
 import React, { useState } from "react";
 import ResumeUploader from '../components/ResumeUploader'
 

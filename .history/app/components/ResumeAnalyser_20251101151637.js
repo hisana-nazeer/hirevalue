@@ -25,7 +25,7 @@ const { completion, isLoading, complete } = useCompletion({
        await complete({ prompt: messageToSend });
 
       
-        // setIsLoadingResume(false)
+        setIsLoadingResume(false)
 
     
     }

@@ -1,5 +1,4 @@
-'use client'
-import React, { useState } from "react";
+'import React, { useState } from "react";
 import ResumeUploader from '../components/ResumeUploader'
 
 const Home = () => {

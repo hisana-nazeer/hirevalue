@@ -1,5 +1,4 @@
 import { streamText } from "ai";
-import OpenAI from "openai";
 
 export const runtime = "edge";
 
@@ -7,25 +6,32 @@ export async function POST(req) {
   console.log("API route /api/resume called");
 
   try {
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) {
-      throw new Error("Missing OPENAI_API_KEY in environment variables");
+    const body = await req.json();
+    console.log("BODY RECEIVED:", body);
+
+    const { prompt } = body;
+
+    if (!prompt) {
+      console.error("No prompt received in request body");
+      return new Response(
+        JSON.stringify({ error: "No prompt received" }),
+        { status: 400, headers: { "Content-Type": "application/json" } }
+      );
     }
 
-    const { messages } = await req.json();
+    // Check API key presence
+    if (!process.env.OPENAI_API_KEY) {
+      console.error("OPENAI_API_KEY is missing!");
+      return new Response(
+        JSON.stringify({ error: "Missing API key" }),
+        { status: 500, headers: { "Content-Type": "application/json" } }
+      );
+    }
 
-    console.log("API KEY EXIST", !!apiKey);
-    console.log("api called, messages received:", messages);
-
-    const openai = new OpenAI({ apiKey });
-
-    // Use streamText with explicit OpenAI instance
+    // Use streamText for response
     return streamText({
-      model: "gpt-4o-mini", // use gpt-4o-mini for faster streaming
-      messages: [
-        {
-          role: "system",
-          content: `
+      model: "gpt-4o-mini", // or "gpt-4" if you prefer
+      prompt: `
 CONTEXT: You are an expert at predicting the dollar worth of resumes.
 -------
 TASK: 
@@ -51,17 +57,20 @@ OUTPUT FORMAT:
       <li>...</li>
       ...
    </ul>
-</Improvements>`,
-        },
-        ...messages,
-      ],
+</Improvements>
+-------
+RESUME:
+${prompt}
+      `,
       stream: true,
       temperature: 1,
-      // 👇 add the OpenAI instance here
-      provider: openai,
     });
+
   } catch (error) {
     console.error("API POST error:", error);
-    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+    return new Response(
+      JSON.stringify({ error: error.message }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
   }
 }

@@ -8,20 +8,17 @@ export async function POST(req) {
 
   try {
     const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) {
-      throw new Error("Missing OPENAI_API_KEY in environment variables");
-    }
+    if (!apiKey) throw new Error("Missing OPENAI_API_KEY");
 
-    const { messages } = await req.json();
+    const body = await req.json(); // read once only
+    console.log("raw body:", body);
 
-    console.log("API KEY EXIST", !!apiKey);
-    console.log("api called, messages received:", messages);
+    const { input, prompt } = body;
+    const userPrompt = input || prompt;
+    if (!userPrompt) throw new Error("No input or prompt received from frontend");
 
-    const openai = new OpenAI({ apiKey });
-
-    // Use streamText with explicit OpenAI instance
     return streamText({
-      model: "gpt-4o-mini", // use gpt-4o-mini for faster streaming
+      model: "gpt-4o-mini",
       messages: [
         {
           role: "system",
@@ -53,12 +50,13 @@ OUTPUT FORMAT:
    </ul>
 </Improvements>`,
         },
-        ...messages,
+        {
+          role: "user",
+          content: userPrompt,
+        },
       ],
       stream: true,
       temperature: 1,
-      // 👇 add the OpenAI instance here
-      provider: openai,
     });
   } catch (error) {
     console.error("API POST error:", error);

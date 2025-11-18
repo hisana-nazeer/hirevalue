@@ -1,4 +1,4 @@
-'use client'
+
 import { useEffect, useState } from "react"
 import ResumeUploader from "./ResumeUploader"
 import { useCompletion } from "@ai-sdk/react";
@@ -25,7 +25,7 @@ const { completion, isLoading, complete } = useCompletion({
        await complete({ prompt: messageToSend });
 
       
-        // setIsLoadingResume(false)
+        setIsLoadingResume(false)
 
     
     }

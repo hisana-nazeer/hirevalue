@@ -1,4 +1,3 @@
-'use client'
 import React from 'react';
 import { useState, useEffect } from 'react';
 import ResumeAnalyser from './ResumeAnalyser';
@@ -87,7 +86,7 @@ useEffect(() => {
     return(
         <div>
             <h2>Resume Uploader Component</h2>
-            {extractedText.trim().length>50?(
+            {extractedText.trim()?(
                 <ResumeAnalyser text={extractedText}/>
             ):(
             <p>Extracting text from your pdf...</p>

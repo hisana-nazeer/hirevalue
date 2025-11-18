@@ -1,32 +1,28 @@
+
 import { streamText } from "ai";
 import OpenAI from "openai";
 
 export const runtime = "edge";
 
 export async function POST(req) {
-  console.log("API route /api/resume called");
-
-  try {
+    console.log("API route /api/resume called")
+    try{
     const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) {
-      throw new Error("Missing OPENAI_API_KEY in environment variables");
-    }
+  const { messages } = await req.json();
 
-    const { messages } = await req.json();
+  console.log("API KEY EXIST",!!process.env.OPENAI_API_KEY)
+  console.log("api called, messages received:", messages)
 
-    console.log("API KEY EXIST", !!apiKey);
-    console.log("api called, messages received:", messages);
 
-    const openai = new OpenAI({ apiKey });
 
-    // Use streamText with explicit OpenAI instance
-    return streamText({
-      model: "gpt-4o-mini", // use gpt-4o-mini for faster streaming
-      messages: [
-        {
-          role: "system",
-          content: `
-CONTEXT: You are an expert at predicting the dollar worth of resumes.
+  // Use streamText for Next.js 15 edge API routes
+  return streamText({
+    model: "gpt-4",
+    messages: [
+      {
+        role: "system",
+        content:
+          `CONTEXT: You are an expert at predicting the dollar worth of resumes.
 -------
 TASK: 
 - You will receive a resume from a user as a test input.
@@ -52,16 +48,15 @@ OUTPUT FORMAT:
       ...
    </ul>
 </Improvements>`,
-        },
-        ...messages,
-      ],
-      stream: true,
-      temperature: 1,
-      // 👇 add the OpenAI instance here
-      provider: openai,
-    });
-  } catch (error) {
-    console.error("API POST error:", error);
+      },
+      ...messages,
+    ],
+    stream: true,
+    temperature: 1,
+  });
+} catch(error){
+    console.log('api post error', error)
     return new Response(JSON.stringify({ error: error.message }), { status: 500 });
   }
 }
+

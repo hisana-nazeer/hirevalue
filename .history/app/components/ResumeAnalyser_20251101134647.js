@@ -1,4 +1,3 @@
-'use client'
 import { useEffect, useState } from "react"
 import ResumeUploader from "./ResumeUploader"
 import { useCompletion } from "@ai-sdk/react";
@@ -18,20 +17,19 @@ const { completion, isLoading, complete } = useCompletion({
     const [resumeText, setResumeText] = useState("")
 
     useEffect(()=>{
-    const getResumeWorth = async(resumeText) =>{
+    const getResumeWorth = async(resumetext) =>{
         const messageToSend =`RESUME:${text}\n\n-----------\n\n`
         setIsLoadingResume(true)
 
-       await complete({ prompt: messageToSend });
-
+        await complete(messageToSend)
       
-        // setIsLoadingResume(false)
+        setIsLoadingResume(false)
 
     
     }
 //You need .then() or await if you want to run code after the async function completes.
 
-    if(text && text.trim().length>50){
+    if(text!==""){
         getResumeWorth(text).then()
     }
     }, [text])
