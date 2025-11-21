@@ -1,4 +1,4 @@
-import { streamText, UIMessage, convertToModelMessages } from 'ai';
+import { streamText } from "ai";
 
 export const runtime = "edge";
 

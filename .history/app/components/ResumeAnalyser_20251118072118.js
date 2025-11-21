@@ -4,37 +4,41 @@ import ResumeWorth from "./ResumeWorth";
 import { useCompletion } from "@ai-sdk/react";
 import styles from "../styles/ResumeAnalyser.module.css"
 
-const ResumeAnalyser=({ text }) => {
-  
-
+const ResumeAnalyser = ({ text }) => {
   const [isLoadingResume, setIsLoadingResume] = useState(false);
 
-  // useCompletion now sends prompt (resume text only)
   const { completion, isLoading, complete } = useCompletion({
-    api: '/api/resume'
+    api: '/api/resume',
   });
 
   useEffect(() => {
-    if (text && text.trim().length > 50) {
+    const getResumeWorth = async () => {
       setIsLoadingResume(true);
 
-      complete({prompt:text})
-      .finally(() => {
-        setIsLoadingResume(false);
+      await complete({
+        messages: [
+          {
+            role: "user",
+            content: `RESUME:\n${text}`
+          }
+        ]
       });
+    };
+
+    if (text && text.trim().length > 50) {
+      getResumeWorth();
     }
   }, [text]);
-  console.log("result text:", completion);
 
   return (
     <div>
       {(isLoadingResume || isLoading) ? (
-        <div className={styles.loadingContainer} />
+        <div className={styles.loadingContainer}></div>
       ) : (
         <ResumeWorth result={completion} />
       )}
     </div>
   );
-}
+};
 
 export default ResumeAnalyser;

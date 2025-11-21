@@ -2,7 +2,6 @@
 import React from "react";
 
 const ResumeWorth = ({ result }) => {
-  console.log("ResumeWorth received result:", result);
   
   if (!result || result.trim().length === 0) {
     return (
@@ -24,7 +23,7 @@ const ResumeWorth = ({ result }) => {
     return match ? match[1].trim() : "";
   };
 console.log("ResumeWorth result:", result);
-console.log("Extracted Worth:", extractSection("Estimated Worth"));
+
   const worth = extractSection("Estimated Worth");
   const explanation = extractSection("Explanation");
   const improvements = extractSection("Improvements");

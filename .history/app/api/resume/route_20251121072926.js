@@ -1,4 +1,4 @@
-import { streamText, UIMessage, convertToModelMessages } from 'ai';
+import { streamText } from "ai";
 
 export const runtime = "edge";
 
@@ -25,7 +25,7 @@ ${prompt}
 
     // ai@5.x returns a native ReadableStream
     const stream = await streamText({
-      model: 'openai/gpt-5.1',
+      
       messages: [{ role: "user", content: finalPrompt }],
     });
     console.log("finalPrompt sent to AI model.",finalPrompt.length);

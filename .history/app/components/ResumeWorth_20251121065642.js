@@ -2,7 +2,7 @@
 import React from "react";
 
 const ResumeWorth = ({ result }) => {
-  console.log("ResumeWorth received result:", result);
+  con
   
   if (!result || result.trim().length === 0) {
     return (

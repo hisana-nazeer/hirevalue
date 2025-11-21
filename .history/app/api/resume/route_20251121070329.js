@@ -1,4 +1,4 @@
-import { streamText, UIMessage, convertToModelMessages } from 'ai';
+import { streamText } from "ai";
 
 export const runtime = "edge";
 
@@ -25,18 +25,18 @@ ${prompt}
 
     // ai@5.x returns a native ReadableStream
     const stream = await streamText({
-      model: 'openai/gpt-5.1',
+      model: "openai:gpt-4o-mini",
       messages: [{ role: "user", content: finalPrompt }],
     });
-    console.log("finalPrompt sent to AI model.",finalPrompt.length);
+    con
 
     // Wrap the stream in a Response
     return new Response(stream, {
       headers: {
-        "Content-Type": "text/plain;"
+        "Content-Type": "text/plain; charset=utf-8"
       }
     });
-   
+    console.log("Response sent successfully.");
 
   } catch (err) {
     console.error("Resume Worth API Error:", err);
@@ -45,5 +45,4 @@ ${prompt}
       { status: 500 }
     );
   }
- console.log("Response sent successfully.");
 }

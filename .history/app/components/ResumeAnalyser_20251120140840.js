@@ -18,13 +18,12 @@ const ResumeAnalyser=({ text }) => {
     if (text && text.trim().length > 50) {
       setIsLoadingResume(true);
 
-      complete({prompt:text})
+      complete(text)
       .finally(() => {
         setIsLoadingResume(false);
       });
     }
   }, [text]);
-  console.log("result text:", completion);
 
   return (
     <div>
