@@ -1,8 +1,7 @@
 import { streamText, UIMessage, convertToModelMessages } from 'ai';
 
 export const runtime = "edge";
-API_KEY = process.env.OPENAI_API_KEY;
-Console.log("API Key loaded:", API_KEY ? "Yes" : "No");
+API
 export async function POST(req) {
   try {
     const  prompt  = await req.text();
