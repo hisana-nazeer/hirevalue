@@ -131,16 +131,19 @@ OUTPUT FORMAT:
 
 -------
 RESUME INPUT:
-${text}
+${resumeText}
 `;
 
     const response = await client.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
-        
+        {
+          role: "system",
+          content: "You are an expert at predicting the dollar worth of resumes."
+        },
         {
           role: "user",
-          content: prompt
+          content: pr
         }
       ]
     });

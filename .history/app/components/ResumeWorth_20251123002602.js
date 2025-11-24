@@ -1,5 +1,4 @@
 const ResumeWorth = ({ result }) => {
-  
   return (
     <div>
       <h3>Resume Worth:</h3>
@@ -7,4 +6,3 @@ const ResumeWorth = ({ result }) => {
     </div>
   );
 };
-export default ResumeWorth;

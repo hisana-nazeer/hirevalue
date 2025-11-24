@@ -131,7 +131,7 @@ OUTPUT FORMAT:
 
 -------
 RESUME INPUT:
-${text}
+${ext}
 `;
 
     const response = await client.chat.completions.create({

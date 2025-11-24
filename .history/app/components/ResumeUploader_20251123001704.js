@@ -92,7 +92,7 @@ useEffect(() => {
             ):(
             <p>Extracting text from your pdf...</p>
         )}
-       
+        //<p>{extractedText}</p>
         </div>
 
     

@@ -100,24 +100,28 @@ export async function POST(req) {
   try {
     const text = await req.text();
     console.log("Received:", text.length);
-    
-    const prompt = `
-CONTEXT: You are an expert at predicting the dollar worth of resumes.
+
+    const response = await client.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        {
+          role: "system",
+          content: `CONTEXT: You are an expert at predicting the dollar worth of resumes.
 -------
-TASK:
+TASK: 
 - You will receive a resume from a user as a test input.
-- Analyze the resume and provide an estimated worth in US dollars.
-- Provide 4 short bullet points explaining the key factors contributing to the assessment,
-  and 4 tips on how they can improve their worth. Each bullet point must be less than 1 line.
+- Analyze the resume and provide an estimated worth in US dollars
+- Provide 4 short bullet points explanation of the key factors contributing to the assessment,
+and 4 tips on how they can improve their worth. Each bullet point should be less than 1 line.
 -------
-OUTPUT FORMAT:
+OUTPUT FORMAT: 
 <Estimated Worth>$...</Estimated Worth>
 <Explanation>
    <ul>
       <li>...</li>
       <li>...</li>
       <li>...</li>
-      <li>...</li>
+      ...
    </ul>
 </Explanation>
 <Improvements>
@@ -125,22 +129,18 @@ OUTPUT FORMAT:
       <li>...</li>
       <li>...</li>
       <li>...</li>
-      <li>...</li>
+      ...
    </ul>
-</Improvements>
-
--------
-RESUME INPUT:
-${text}
-`;
-
-    const response = await client.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        
+</Improvements>`
+      },
+      ...messages,
+    ],
+    stream: true,
+    temperature: 1,
+  });
         {
           role: "user",
-          content: prompt
+          content: text
         }
       ]
     });
