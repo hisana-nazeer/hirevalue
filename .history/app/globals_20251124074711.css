@@ -1,5 +1,4 @@
-@import "tailwindcss";
-.upload-container{
+@import "tailwindcss";.upload-container{
   display: flex;
   gap:70px
 }
