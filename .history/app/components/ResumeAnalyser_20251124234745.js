@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 import ResumeWorth from "./ResumeWorth";
+import styles from "../styles/ResumeAnalyser.module.css";
 
 const ResumeAnalyser = ({ text }) => {
   const [result, setResult] = useState("");
@@ -17,7 +18,9 @@ const ResumeAnalyser = ({ text }) => {
         body: text
       });
 
-      const data = await response.text();
+      const data = await response.text();   // <-- important
+      console.log("Frontend received:", data);
+
       setResult(data);
       setIsLoading(false);
     }
@@ -28,14 +31,7 @@ const ResumeAnalyser = ({ text }) => {
   return (
     <div>
       {isLoading ? (
-        <div className="bg-gray-800 text-gray-300 p-6 rounded-xl shadow-lg w-full max-w-lg mx-auto mt-6 text-center border border-gray-700 animate-pulse">
-          <p className="text-lg font-semibold mb-2">
-            I am scanning your resume...
-          </p>
-          <p className="text-sm text-gray-400">
-            Just a moment, we’re analysing your skills and experience.
-          </p>
-        </div>
+        <div className={styles.loadingContainer} />
       ) : (
         <ResumeWorth result={result} />
       )}

@@ -1,5 +1,0 @@
-const ResumeAnalyser=()=>{
-    <div>
-        
-    </div>
-}

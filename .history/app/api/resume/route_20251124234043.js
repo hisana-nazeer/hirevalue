@@ -19,7 +19,7 @@ TASK:
 - You will receive a resume from a user as a test input.
 - Analyze the resume and provide an estimated worth in US dollars.
 - Provide 4 short bullet points explaining the key factors contributing to the assessment,
-  and 4 tips on how they can improve their worth also the skills or certifications she/he must do to upgrade. Each bullet point must be less than 1 line.
+  and 4 tips on how they can improve their worth also the skills or certifications she. Each bullet point must be less than 1 line.
 -------
 OUTPUT FORMAT:
 <Estimated Worth>$...</Estimated Worth>

@@ -18,6 +18,8 @@ const ResumeAnalyser = ({ text }) => {
       });
 
       const data = await response.text();
+      console.log("Frontend received:", data);
+
       setResult(data);
       setIsLoading(false);
     }
@@ -28,13 +30,16 @@ const ResumeAnalyser = ({ text }) => {
   return (
     <div>
       {isLoading ? (
-        <div className="bg-gray-800 text-gray-300 p-6 rounded-xl shadow-lg w-full max-w-lg mx-auto mt-6 text-center border border-gray-700 animate-pulse">
-          <p className="text-lg font-semibold mb-2">
-            I am scanning your resume...
+        <div className="flex flex-col items-center mt-10 p-6 text-gray-600">
+          <p className="text-lg font-medium mb-4 animate-pulse">
+            Thinking… just a moment!
           </p>
-          <p className="text-sm text-gray-400">
-            Just a moment, we’re analysing your skills and experience.
-          </p>
+
+          <div className="flex space-x-2">
+            <span className="w-3 h-3 rounded-full bg-gray-400 animate-bounce" style={{ animationDelay: "0ms" }}></span>
+            <span className="w-3 h-3 rounded-full bg-gray-400 animate-bounce" style={{ animationDelay: "150ms" }}></span>
+            <span className="w-3 h-3 rounded-full bg-gray-400 animate-bounce" style={{ animationDelay: "300ms" }}></span>
+          </div>
         </div>
       ) : (
         <ResumeWorth result={result} />

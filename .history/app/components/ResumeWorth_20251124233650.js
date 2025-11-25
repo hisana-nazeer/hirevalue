@@ -41,7 +41,7 @@ const ResumeWorth = ({ result }) => {
       {/* Improvements Block */}
       <div className="bg-gray-800 p-5 rounded-xl shadow-md border border-gray-700">
         <h3 className="text-xl font-bold mb-3 text-indigo-300">
-          Where you can power up next!
+          Where you can power up next
         </h3>
 
         <ul

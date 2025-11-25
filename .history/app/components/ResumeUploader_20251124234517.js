@@ -84,19 +84,7 @@ useEffect(() => {
       console.log("✅ Updated extracted text:", extractedText.slice(0, 200));
     }
   }, [extractedText]);
-    return(
-        <div>
-          
-            {extractedText.trim().length>50?(
-                <ResumeAnalyser text={extractedText}/>
-            ):(
-            <p>Extracting text from your pdf...</p>
-        )}
-       
-        </div>
 
-    
-    )
 }
 
 export default ResumeUploader;

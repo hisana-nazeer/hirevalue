@@ -27,31 +27,4 @@ const ResumeWorth = ({ result }) => {
       </h2>
 
       {/* Explanation Block */}
-      <div className="bg-gray-800 p-5 rounded-xl shadow-md border border-gray-700">
-        <h3 className="text-xl font-bold mb-3 text-indigo-300">
-          Where you shine!
-        </h3>
-
-        <ul
-          className="list-disc pl-6 space-y-1 text-gray-300"
-          dangerouslySetInnerHTML={{ __html: explanationHTML }}
-        />
-      </div>
-
-      {/* Improvements Block */}
-      <div className="bg-gray-800 p-5 rounded-xl shadow-md border border-gray-700">
-        <h3 className="text-xl font-bold mb-3 text-indigo-300">
-          Where you can power up next!
-        </h3>
-
-        <ul
-          className="list-disc pl-6 space-y-1 text-gray-300"
-          dangerouslySetInnerHTML={{ __html: improvementHTML }}
-        />
-      </div>
-      
-    </div>
-  );
-};
-
-export default ResumeWorth;
+      <div className="bg-gray-8

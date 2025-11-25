@@ -86,7 +86,7 @@ useEffect(() => {
   }, [extractedText]);
     return(
         <div>
-          
+           
             {extractedText.trim().length>50?(
                 <ResumeAnalyser text={extractedText}/>
             ):(
