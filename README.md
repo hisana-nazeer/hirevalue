@@ -40,12 +40,15 @@ cd value-ed
 Install dependencies:
 npm install
 
+Add your environment variable:
+OPENAI_API_KEY=your_key_here
+
 Run the project:
 npm run dev
 
 ---
 
-## 🧠 How It Works
+### 🧠 How It Works
 
 - 📄 Upload any PDF resume  
 - 🔍 Extract text using PDF.js  
