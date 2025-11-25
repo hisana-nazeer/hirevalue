@@ -90,7 +90,7 @@ const ResumeUploader = ({ resume }) => {
   </div>
 )}
 
-      
+      )}
 
       {!isExtracting && extractedText.trim().length > 50 ? (
         <ResumeAnalyser text={extractedText} />

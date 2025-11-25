@@ -28,27 +28,7 @@ const ResumeAnalyser = ({ text }) => {
   return (
     <div className="mt-6">
       {isLoading ? (
-      
-  <div className="mt-6 animate-pulse space-y-4">
-
-    <div className="h-6 bg-gray-700 rounded w-1/3 mx-auto"></div>
-
-    <div className="h-4 bg-gray-700 rounded w-2/3 mx-auto"></div>
-
-    <div className="h-4 bg-gray-700 rounded w-3/4 mx-auto"></div>
-
-    <div className="h-4 bg-gray-700 rounded w-1/2 mx-auto"></div>
-
-    <div className="flex justify-center mt-6">
-      <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-indigo-400"></div>
-    </div>
-
-    <p className="text-indigo-300 text-center mt-2">
-      Analyzing your resume…
-    </p>
-  </div>
-
-
+       
       ) : (
         <ResumeWorth result={result} />
       )}

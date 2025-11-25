@@ -28,7 +28,7 @@ const ResumeAnalyser = ({ text }) => {
   return (
     <div className="mt-6">
       {isLoading ? (
-      
+       {isLoading ? (
   <div className="mt-6 animate-pulse space-y-4">
 
     <div className="h-6 bg-gray-700 rounded w-1/3 mx-auto"></div>
@@ -47,7 +47,9 @@ const ResumeAnalyser = ({ text }) => {
       Analyzing your resume…
     </p>
   </div>
-
+) : (
+  <ResumeWorth result={result} />
+)}
 
       ) : (
         <ResumeWorth result={result} />

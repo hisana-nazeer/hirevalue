@@ -51,7 +51,7 @@ const ResumeAnalyser = ({ text }) => {
 
       ) : (
         <ResumeWorth result={result} />
-      )}
+      )
     </div>
   );
 };

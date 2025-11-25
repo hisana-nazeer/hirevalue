@@ -71,26 +71,8 @@ const ResumeUploader = ({ resume }) => {
     <div>
       {error && <p className="text-red-400">{error}</p>}
 
-      {isExtracting && (
-  <div className="flex flex-col items-center mt-6 gap-3">
-    <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-indigo-400"></div>
-
-    <p className="text-indigo-300 text-center text-lg">
-      Extracting text from your PDF…
-    </p>
-
-    <p className="text-sm text-indigo-400 opacity-70 text-center">
-      This may take a few seconds depending on your file size.
-    </p>
-
-    {/* Progress Illusion */}
-    <div className="w-64 h-2 bg-gray-700 rounded-full overflow-hidden mt-2">
-      <div className="h-full w-full bg-indigo-400 animate-progress"></div>
-    </div>
-  </div>
-)}
-
       
+      )}
 
       {!isExtracting && extractedText.trim().length > 50 ? (
         <ResumeAnalyser text={extractedText} />

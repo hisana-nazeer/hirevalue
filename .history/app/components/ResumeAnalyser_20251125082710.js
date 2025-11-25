@@ -47,12 +47,13 @@ const ResumeAnalyser = ({ text }) => {
       Analyzing your resume…
     </p>
   </div>
+  </div>
 
 
       ) : (
         <ResumeWorth result={result} />
-      )}
-    </div>
+      )
+  
   );
 };
 

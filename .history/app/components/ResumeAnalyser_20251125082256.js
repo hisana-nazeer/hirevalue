@@ -47,7 +47,9 @@ const ResumeAnalyser = ({ text }) => {
       Analyzing your resume…
     </p>
   </div>
-
+) : (
+  <ResumeWorth result={result} />
+)}
 
       ) : (
         <ResumeWorth result={result} />
