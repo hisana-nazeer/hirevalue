@@ -23,7 +23,7 @@ const Home = () => {
       </div>
 
       {/* UPLOAD BOX */}
-      <div className="w-full max-w-lg bg-gray-900 p-6 rounded-2xl shadow-xl border border-gray-800/50">
+      <div className="w-full max-w-lg bg-gray-900 p-6 rounded-2xl shadow-xl border border-gray-800/50"></div>
       <h1 className="text-3xl md:text-4xl font-bold text-center mb-10 tracking-wide">
         Upload your resume and find your hire value!
       </h1>
@@ -73,7 +73,6 @@ const Home = () => {
         </div>
       )}
 
-    </div>
     </div>
   );
 };

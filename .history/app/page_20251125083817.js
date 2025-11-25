@@ -2,10 +2,10 @@
 
 
 import React from 'react'
-
+import ResumeAnalyser from './components/ResumeAnalyser'
 import Home from './components/Home'
 
-function page() {
+function Home() {
   return (
     <div>
       
@@ -15,4 +15,4 @@ function page() {
   )
 }
 
-export default page
+export default Home

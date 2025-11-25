@@ -13,7 +13,8 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-200 flex flex-col items-center px-4 py-10">
- <div className="text-center mb-10">
+
+      <div className="text-center mb-10">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-wide text-indigo-400 drop-shadow-md">
           Value<span className="text-white">+</span>Ed
         </h1>
@@ -22,8 +23,9 @@ const Home = () => {
         </p>
       </div>
 
-      {/* UPLOAD BOX */}
-      <div className="w-full max-w-lg bg-gray-900 p-6 rounded-2xl shadow-xl border border-gray-800/50">
+      {/* REMOVE THIS EMPTY DIV */}
+      {/* <div className="w-full max-w-lg bg-gray-900 p-6 rounded-2xl shadow-xl border border-gray-800/50"></div> */}
+
       <h1 className="text-3xl md:text-4xl font-bold text-center mb-10 tracking-wide">
         Upload your resume and find your hire value!
       </h1>
@@ -73,7 +75,6 @@ const Home = () => {
         </div>
       )}
 
-    </div>
     </div>
   );
 };
