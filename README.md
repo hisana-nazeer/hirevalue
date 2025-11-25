@@ -72,19 +72,18 @@ npm run dev
 
 ### Screenshots
 
+<img width="3200" height="1818" alt="Screenshot (1776)" src="https://github.com/user-attachments/assets/6325d013-c418-466b-b329-7b632b46e6e4" />
+
+
+
 <img width="3200" height="2000" alt="Screenshot (1777)" src="https://github.com/user-attachments/assets/63d65cf5-0679-4400-a0a3-9cd7dcd9af2f" />
 
-
-<img width="3200" height="1818" alt="Screenshot (1776)" src="https://github.com/user-attachments/assets/6325d013-c418-466b-b329-7b632b46e6e4" />
 
 ---
 
 ### 📌 Future Improvements
 
 - Support for DOCX uploads
-
-Add downloadable analysis report
-
-Add AI-powered resume rewriting
-
-Job-title–specific worth prediction
+- Add downloadable analysis report
+- Add AI-powered resume rewriting
+- Job-title–specific worth prediction
