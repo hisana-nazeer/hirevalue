@@ -33,7 +33,8 @@ Value+Ed is an app that reads a user’s PDF résumé, extracts the text using P
 Clone the repo:
 
 ```bash
-git clone https://github.com/yourusername/value-ed.git
+ 
+git clone https://github.com/hisana-nazeer/Value-Ed
 cd value-ed
 ```
 
