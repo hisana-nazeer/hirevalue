@@ -28,7 +28,6 @@ Value+Ed is an app that reads a user’s PDF résumé, extracts the text using P
 
 
 ---
-
 ## ⚙️ Installation & Setup
 
 Clone the repo:
@@ -36,15 +35,25 @@ Clone the repo:
 ```bash
 git clone https://github.com/yourusername/value-ed.git
 cd value-ed
+```
 
 Install dependencies:
+
+```bash
 npm install
+```
 
 Add your environment variable:
+
+```bash
 OPENAI_API_KEY=your_key_here
+```
 
 Run the project:
+
+```bash
 npm run dev
+```
 
 ---
 
@@ -60,8 +69,18 @@ npm run dev
 
 ---
 
-# 📸 Screenshots
+### Screenshots
 
+<img width="3200" height="2000" alt="Screenshot (1777)" src="https://github.com/user-attachments/assets/63d65cf5-0679-4400-a0a3-9cd7dcd9af2f" />
 
+---
 
+### 📌 Future Improvements
 
+- Support for DOCX uploads
+
+Add downloadable analysis report
+
+Add AI-powered resume rewriting
+
+Job-title–specific worth prediction
