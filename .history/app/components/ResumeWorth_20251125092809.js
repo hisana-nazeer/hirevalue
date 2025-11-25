@@ -15,15 +15,15 @@ const ResumeWorth = ({ result }) => {
     : "";
 
   return (
-    <div className="w-2xl flex justify-center mt-10 mb-20 ">
-      <div className="max-w-2xl px-2 w-full bg-gray-900 text-gray-100 p-8 rounded-xl shadow-xl space-y-10 ">
+    <div className="w-full flex justify-center mt-10 mb-20 px-4">
+      <div className="max-w-2xl w-full bg-gray-900 text-gray-100 p-8 rounded-xl shadow-xl space-y-10">
 
         {/* Worth */}
-        <div className="text">
-          <h2 className="text-2xl py-4 font-bold text-indigo-400">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-indigo-400">
             Hey dude, your worth is:
           </h2>
-          <p className="text-4xl  font-extrabold text-white ">{worth}</p>
+          <p className="text-4xl font-extrabold text-white mt-2 ">{worth}</p>
         </div>
 
         {/* Explanation Block */}
@@ -33,7 +33,7 @@ const ResumeWorth = ({ result }) => {
           </h3>
 
           <ul
-            className="list-disc pl-6 space-y-2  text-gray-300 "
+            className="list-disc pl-6 space-y-2 h- text-gray-300 "
             dangerouslySetInnerHTML={{ __html: explanationHTML }}
           />
         </div>

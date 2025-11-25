@@ -19,11 +19,11 @@ const ResumeWorth = ({ result }) => {
       <div className="max-w-2xl px-2 w-full bg-gray-900 text-gray-100 p-8 rounded-xl shadow-xl space-y-10 ">
 
         {/* Worth */}
-        <div className="text">
-          <h2 className="text-2xl py-4 font-bold text-indigo-400">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-indigo-400">
             Hey dude, your worth is:
           </h2>
-          <p className="text-4xl  font-extrabold text-white ">{worth}</p>
+          <p className="text-4xl  font-extrabold text-white m ">{worth}</p>
         </div>
 
         {/* Explanation Block */}
