@@ -1,8 +1,33 @@
-# Value+Ed – AI Resume Worth Analyzer
+# Value+Ed – AI-Powered Résumé Worth Analyzer
+---
 
-Value+Ed is an app that reads a user’s PDF résumé, extracts the text using PDF.js, sends it to an AI model for analysis, and displays a predicted "hire value" along with strengths and improvement suggestions.
+Value+Ed helps job seekers understand the strengths, weaknesses, and real-world value of their résumé. Instead of guessing what to improve, users receive instant, AI-driven insights so they can upskill with purpose and accelerate their career growth.
 
 ---
+
+## 🚩 Problem
+Most job seekers revise their résumés without knowing what actually matters to employers. They don’t know which skills are missing, which sections need strengthening, or how competitive their profile truly is.  
+Traditional résumé reviews are slow, subjective, and often expensive.
+
+**Value+Ed solves this by giving fast, consistent, actionable insights powered by AI.**
+
+---
+
+## ✨ How It Works
+1. User uploads a PDF résumé.  
+2. PDF.js extracts the text client-side.  
+3. The extracted text is sent to an AI model.  
+4. The model evaluates skills, clarity, formatting, seniority signals, and relevance.  
+5. The app displays:  
+   - Predicted **Hire Value**  
+   - Key strengths  
+   - Improvement suggestions  
+   - Skill gaps and next-step guidance  
+
+Everything runs smoothly in the browser with a modern UI.
+
+---
+
 
 ## 🚀 Features
 
@@ -76,14 +101,14 @@ npm run dev
 
 
 
-<img width="3200" height="2000" alt="Screenshot (1777)" src="https://github.com/user-attachments/assets/63d65cf5-0679-4400-a0a3-9cd7dcd9af2f" />
+<img width="3200" height="1810" alt="Screenshot (1777)" src="https://github.com/user-attachments/assets/12d5177d-c27a-433e-a9b1-eade5f27268b" />
+
 
 
 ---
 
 ### 📌 Future Improvements
 
-- Support for DOCX uploads
 - Add downloadable analysis report
 - Add AI-powered resume rewriting
 - Job-title–specific worth prediction
