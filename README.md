@@ -1,5 +1,4 @@
-<img width="3200" height="1818" alt="Screenshot (1779)" src="https://github.com/user-attachments/assets/9a596d7d-bae4-4711-a798-b09f905befba" /># Value+Ed – AI-Powered Résumé Worth Analyzer
----
+
 
 Value+Ed helps job seekers understand the strengths, weaknesses, and real-world value of their résumé. Instead of guessing what to improve, users receive instant, AI-driven insights so they can upskill with purpose and accelerate their career growth.
 
@@ -53,7 +52,7 @@ Everything runs smoothly in the browser with a modern UI.
 ## 🎥 Demo Link
 
 **Live Demo:**  
-[Click here to open MamaBloom](https://mamabloom.vercel.app)
+[Click here to open Value+Ed](hirevalue-2862.vercel.app)
 
 
 ---
