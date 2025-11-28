@@ -52,7 +52,7 @@ Everything runs smoothly in the browser with a modern UI.
 ## 🎥 Demo Link
 
 **Live Demo:**  
-[Click here to open Value+Ed](hirevalue-2862.vercel.app)
+[Click here to open Value+Ed](https://hirevalue-2862.vercel.app/)
 
 
 ---
