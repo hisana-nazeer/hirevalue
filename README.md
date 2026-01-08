@@ -94,7 +94,7 @@ npm run dev
 - ⭐ Strengths + improvement insights  
 - ⚡ Modern UI with Tailwind CSS  
 - ⏳ Friendly loading animations  
-- 📱 Fully responsive design  
+- 📱 Fully responsive design 
 
 ---
 
